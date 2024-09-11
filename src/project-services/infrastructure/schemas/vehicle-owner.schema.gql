@@ -1,0 +1,51 @@
+type VehicleOwner {
+  id: ID!
+  name: String
+  lastname: String
+  age: Int
+  userId: Int
+  user: User
+  vehicles: [Vehicle]
+  status: Int
+  createdAt: String
+}
+
+type ListVehicleOwner {
+  data: [VehicleOwner]
+  metaData: MetaData
+}
+
+input VehicleOwnerFilter {
+  page: Int
+  perPage: Int
+  sortOrder: String
+  sortField: String
+  search: String
+  name: String
+  lastname: String
+  age: Int
+  status: Int
+}
+
+input VehicleOwnerRegister {
+  name: String!
+  lastname: String!
+  age: Int
+}
+
+input VehicleOwnerUpdate {
+  name: String
+  lastname: String
+  age: Int
+}
+
+type Query {
+  getVehicleOwnerById(vehicleOwnerId: ID!): VehicleOwner
+  getVehicleOwners(input: VehicleOwnerFilter): ListVehicleOwner
+}
+
+type Mutation {
+  createVehicleOwner(input: VehicleOwnerRegister!): VehicleOwner
+  updateVehicleOwner(input: VehicleOwnerUpdate): Boolean
+  changeStatusVehicleOwner(vehicleOwnerId: ID!): Boolean
+}

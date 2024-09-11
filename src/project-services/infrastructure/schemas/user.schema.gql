@@ -1,0 +1,37 @@
+type User {
+  id: ID!
+  username: String
+  email: String
+  status: Int
+  createdAt: String
+}
+
+type ListUser {
+  data: [User]
+  metaData: MetaData
+}
+
+input UserFilter {
+  page: Int
+  perPage: Int
+  sortOrder: String
+  sortField: String
+  search: String
+  username: String
+  email: String
+  status: Int
+}
+
+input ChangePassword {
+  newPassword: String!
+  oldPassword: String!
+}
+
+type Query {
+  users(input: UserFilter): ListUser
+}
+
+type Mutation {
+  changePasswordUser(input: ChangePassword!): Boolean
+  changeStatusUser(id: ID!): Boolean
+}

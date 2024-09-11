@@ -1,0 +1,5 @@
+type MetaData {
+  page: Int
+  perPage: Int
+  totalCount: Int
+}

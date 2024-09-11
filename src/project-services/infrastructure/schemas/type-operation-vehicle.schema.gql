@@ -1,0 +1,13 @@
+type TypeOperationVehicle {
+  id: ID!
+  name: String
+  code: String
+  description: String
+  vehicles: [Vehicle]
+  status: Int
+  createdAt: String
+}
+
+type Query {
+  getTypeOperationVehicles: [TypeOperationVehicle]
+}

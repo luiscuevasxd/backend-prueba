@@ -1,0 +1,60 @@
+type Vehicle {
+  id: ID!
+  brand: String
+  model: String
+  price: Int
+  userId: Int
+  user: User
+  typeOperationVehicleId: Int
+  typeOperationVehicle: TypeOperationVehicle
+  vehicleOwnerId: Int
+  vehicleOwner: VehicleOwner
+  status: Int
+  createdAt: String
+}
+
+type ListVehicle {
+  data: [Vehicle]
+  metaData: MetaData
+}
+
+input VehicleFilter {
+  page: Int
+  perPage: Int
+  sortOrder: String
+  sortField: String
+  search: String
+  brand: String
+  model: String
+  typeOperationVehicleId: Int
+  vehicleOwnerId: Int
+  status: Int
+}
+
+input VehicleRegister {
+  brand: String!
+  model: String!
+  price: Int!
+  typeOperationVehicleId: Int!
+  vehicleOwnerId: Int!
+}
+
+input VehicleUpdate {
+  id: ID!
+  brand: String
+  model: String
+  price: Int
+  typeOperationVehicleId: Int
+  vehicleOwnerId: Int
+}
+
+type Query {
+  getVehicleById(vehicleId: ID!): Vehicle
+  getVehicles(input: VehicleFilter): ListVehicle
+}
+
+type Mutation {
+  createVehicle(input: VehicleRegister!): Vehicle
+  updateVehicle(input: VehicleUpdate): Boolean
+  changeStatusVehicle(vehicleId: ID!): Boolean
+}
